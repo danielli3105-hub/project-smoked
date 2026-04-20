@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Smoked | Authentic American BBQ in Johor Bahru</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* WinWinKit Design System CSS */
+        :root {
+            /* Brand Colors */
+            --background-color: #111113;
+            --accent-color: #daff01; /* Neon Yellow */
+            --secondary-color: #7f4a8e;
+            
+            /* Background tokens */
+            --bg-default: var(--background-color);
+            --bg-elevated: #1a1a1c;
+            --bg-card: #222224;
+
+            /* Text tokens */
+            --text-primary: #ffffff;
+            --text-secondary: #e5e5e5;
+            --text-muted: #a3a3a3;
+            --text-subtle: #737373;
+
+            /* Border tokens */
+            --border-default: #2d2d30;
+            --border-strong: #3f3f46;
+
+            /* Radius */
+            --radius-sm: 0.25rem;
+            --radius-md: 0.375rem;
+            --radius-lg: 0.5rem;
+            --radius-xl: 0.75rem;
+            --radius-2xl: 1rem;
+
+            /* Motion */
+            --duration-base: 200ms;
+            --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-default);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(17, 17, 19, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-default);
+            transition: all var(--duration-base);
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--accent-color);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.9375rem;
+            transition: color var(--duration-base);
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.625rem 1.25rem;
+            border-radius: var(--radius-xl);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all var(--duration-base) var(--easing-standard);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-accent {
+            background: var(--accent-color);
+            color: #000;
+        }
+
+        .btn-accent:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(218, 255, 1, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-strong);
+            color: var(--text-primary);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: #fff;
+        }
+
+        .btn-whatsapp:hover {
+            background: #20ba5a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.2);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            padding: 10rem 1.5rem 6rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(circle, rgba(218, 255, 1, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .hero-tagline {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(218, 255, 1, 0.1);
+            color: var(--accent-color);
+            border-radius: var(--radius-2xl);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(218, 255, 1, 0.2);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        .hero h1 span {
+            color: var(--accent-color);
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 2rem 1.5rem;
+            border-top: 1px solid var(--border-default);
+            border-bottom: 1px solid var(--border-default);
+        }
+
+        .google-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        .stars {
+            color: #fbbc04;
+            display: flex;
+            gap: 2px;
+        }
+
+        /* Services Grid */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: var(--radius-2xl);
+            border: 1px solid var(--border-default);
+            transition: all var(--duration-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.9375rem;
+        }
+
+        /* Bento Gallery */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 200px;
+            gap: 1.5rem;
+        }
+
+        .bento-item {
+            background: var(--bg-card);
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bento-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .bento-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .bento-item.large { grid-column: span 2; grid-row: span 2; }
+        .bento-item.tall { grid-row: span 2; }
+
+        /* Testimonials */
+        .testimonial-card {
+            background: var(--bg-elevated);
+            padding: 2rem;
+            border-radius: var(--radius-2xl);
+            border: 1px solid var(--border-default);
+        }
+
+        .testimonial-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .avatar {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: var(--accent-color);
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        /* Location & Hours */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            border: 1px solid var(--border-default);
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-item i {
+            color: var(--accent-color);
+            font-size: 1.25rem;
+            margin-top: 0.25rem;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-default);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-muted);
+            display: none;
+        }
+
+        /* Floating Buttons */
+        .floating-actions {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 999;
+        }
+
+        .float-btn {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .float-whatsapp { background: #25d366; color: white; }
+        .float-top { background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-default); }
+
+        .float-btn:hover { transform: scale(1.1); }
+
+        /* Footer */
+        footer {
+            background: #0a0a0b;
+            padding: 4rem 1.5rem;
+            border-top: 1px solid var(--border-default);
+            text-align: center;
+        }
+
+        .footer-logo {
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            color: var(--text-muted);
+            font-size: 1.25rem;
+            transition: color 0.3s;
+        }
+
+        .social-link:hover { color: var(--accent-color); }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .menu-toggle { display: block; }
+            .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .bento-item.large { grid-column: span 2; }
+            .hero h1 { font-size: 3rem; }
+        }
+
+        /* Animations */
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s var(--easing-standard);
+        }
+
+        [data-reveal].active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="#" class="brand">
+                <div class="brand-icon"><i class="fas fa-fire"></i></div>
+                PROJECT SMOKED
+            </a>
+            <div class="nav-links">
+                <a href="#services" class="nav-link">Menu</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#location" class="nav-link">Location</a>
+                <a href="https://wa.me/60123858224" class="btn btn-accent">Reserve Now</a>
+            </div>
+            <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div data-reveal>
+            <span class="hero-tagline">Authentic American BBQ in Johor Bahru</span>
+            <h1>Real Fire. <span>No Shortcuts.</span></h1>
+            <p>Texas-style smoked meats, slow-cooked for 12+ hours using traditional wood-fire techniques. Experience the tenderest cuts in the heart of Sentosa.</p>
+            <div class="hero-actions">
+                <a href="https://wa.me/60123858224" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
+                <a href="https://letsumai.com/widget/project-smoked" class="btn btn-outline">Book a Table</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <div class="trust-section" data-reveal>
+        <div class="google-rating">
+            <i class="fab fa-google"></i>
+            <span>4.9 / 5.0 Rating</span>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+        </div>
+        <p class="text-muted">Trusted by 500+ BBQ lovers in JB & Singapore</p>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="section-header" data-reveal>
+            <h2>Our Signature Smokes</h2>
+            <p class="text-muted">Every cut is seasoned with our secret dry rub and smoked till perfection.</p>
+        </div>
+        <div class="grid">
+            <div class="card" data-reveal>
+                <div class="card-icon"><i class="fas fa-drumstick-bite"></i></div>
+                <h3>Black Angus Brisket</h3>
+                <p>Melt-in-your-mouth tender brisket with a deep smoky bark. The ultimate Texas classic.</p>
+            </div>
+            <div class="card" data-reveal>
+                <div class="card-icon"><i class="fas fa-piggy-bank"></i></div>
+                <h3>Pork Spare Ribs</h3>
+                <p>St. Louis cut ribs, smoked low and slow, finished with our signature house glaze.</p>
+            </div>
+            <div class="card" data-reveal>
+                <div class="card-icon"><i class="fas fa-hamburger"></i></div>
+                <h3>Artisan Platters</h3>
+                <p>Perfect for sharing. A curated selection of our finest meats, sides, and house-made sauces.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section style="background: var(--bg-elevated); border-radius: var(--radius-2xl); margin-top: 2rem;">
+        <div class="section-header" data-reveal>
+            <h2>Why Project Smoked?</h2>
+        </div>
+        <div class="grid">
+            <div class="card" style="background: transparent; border: none;" data-reveal>
+                <i class="fas fa-clock card-icon"></i>
+                <h3>12-Hour Smoking</h3>
+                <p>We don't rush perfection. Our smokers run 24/7 to ensure maximum flavor infusion.</p>
+            </div>
+            <div class="card" style="background: transparent; border: none;" data-reveal>
+                <i class="fas fa-seedling card-icon"></i>
+                <h3>Real Wood Fire</h3>
+                <p>No liquid smoke. Just premium wood logs providing that authentic forest aroma.</p>
+            </div>
+            <div class="card" style="background: transparent; border: none;" data-reveal>
+                <i class="fas fa-medal card-icon"></i>
+                <h3>Premium Cuts</h3>
+                <p>We source only the best Black Angus and Kurobuta for consistent quality.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="section-header" data-reveal>
+            <h2>The Smokehouse Vibe</h2>
+        </div>
+        <div class="bento-grid">
+            <div class="bento-item large" data-reveal>
+                <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&q=80" alt="Smoked Brisket">
+            </div>
+            <div class="bento-item" data-reveal>
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80" alt="Ribs">
+            </div>
+            <div class="bento-item tall" data-reveal>
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&q=80" alt="Grill">
+            </div>
+            <div class="bento-item" data-reveal>
+                <img src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?auto=format&fit=crop&q=80" alt="Meat">
+            </div>
+            <div class="bento-item" data-reveal>
+                <img src="https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&q=80" alt="Ambience">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section>
+        <div class="section-header" data-reveal>
+            <h2>Voices from the Pit</h2>
+        </div>
+        <div class="grid">
+            <div class="testimonial-card" data-reveal>
+                <div class="testimonial-meta">
+                    <div class="avatar">JC</div>
+                    <div>
+                        <strong>Jason Chew</strong>
+                        <p class="text-sm text-muted">Google Review</p>
+                    </div>
+                </div>
+                <p>"Best smoked meat in JB. The beef ribs are out of this world. Super tender and juicy!"</p>
+            </div>
+            <div class="testimonial-card" data-reveal>
+                <div class="testimonial-meta">
+                    <div class="avatar">SL</div>
+                    <div>
+                        <strong>Sarah Lim</strong>
+                        <p class="text-sm text-muted">Local Foodie</p>
+                    </div>
+                </div>
+                <p>"The ambience is so chill. Perfect spot for a weekend dinner with friends. Craft beers are a great plus!"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location">
+        <div class="contact-grid">
+            <div data-reveal>
+                <h2>Visit Us</h2>
+                <p class="text-muted mb-8">Located in the vibrant heart of Taman Sentosa, Johor Bahru.</p>
+                
+                <div class="info-list">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Address</strong>
+                            <p>224 Jalan Sutera, Taman Sentosa,<br>80150 Johor Bahru, Johor, Malaysia</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Opening Hours</strong>
+                            <p>Tue - Sun: 12:00 PM - 10:00 PM<br>Closed on Mondays</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Contact</strong>
+                            <p>+60 12-385 8224</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="map-container" data-reveal>
+                <!-- Simulation of Embedded Map -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.4688970868294!2d103.7668615!3d1.4904258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da6dc25e24395b%3A0x8f7d9d9f9d9f9d9f!2sProject%20Smoked!5e0!3m2!1sen!2smy!4v1710000000000!5m2!1sen!2smy" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+        <div class="section-header" data-reveal>
+            <h2>Common Questions</h2>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="faq-item" data-reveal>
+                <div class="faq-question">Do I need to make a reservation? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Yes, we highly recommend it, especially on weekends as we often sell out of signature cuts by evening.</div>
+            </div>
+            <div class="faq-item" data-reveal>
+                <div class="faq-question">Is your meat Halal-certified? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">We are a non-halal establishment as we serve pork items. However, we source our beef from certified suppliers.</div>
+            </div>
+            <div class="faq-item" data-reveal>
+                <div class="faq-question">Is there parking available? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Yes, there is street parking available directly in front of and around the restaurant in Taman Sentosa.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo brand">
+            <div class="brand-icon"><i class="fas fa-fire"></i></div>
+            PROJECT SMOKED
+        </div>
+        <div class="social-links">
+            <a href="https://facebook.com/projectsmoked" class="social-link"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com/project_smoked" class="social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div style="margin-top: 1rem;">
+            <a href="#" class="nav-link" style="font-size: 0.8rem;">Privacy Policy</a> | 
+            <a href="#" class="nav-link" style="font-size: 0.8rem;">Terms of Service</a>
+        </div>
+        <p class="text-subtle" style="margin-top: 2rem;">© 2024 Project Smoked. Built for BBQ lovers in Johor Bahru.</p>
+    </footer>
+
+    <!-- Floating Actions -->
+    <div class="floating-actions">
+        <a href="https://wa.me/60123858224" class="float-btn float-whatsapp" title="WhatsApp Us">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="#" class="float-btn float-top" id="backToTop">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+    </div>
+
+    <script>
+        // Reveal on scroll
+        function reveal() {
+            var reveals = document.querySelectorAll("[data-reveal]");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        window.addEventListener("load", reveal);
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.nextElementSibling;
+                const icon = item.querySelector('i');
+                const isOpen = answer.style.display === 'block';
+                
+                // Close all others
+                document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+                document.querySelectorAll('.faq-question i').forEach(i => i.className = 'fas fa-chevron-down');
+
+                if (!isOpen) {
+                    answer.style.display = 'block';
+                    icon.className = 'fas fa-chevron-up';
+                }
+            });
+        });
+
+        // Back to top
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
